@@ -1,0 +1,189 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+.header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.header nav ul li {
+    margin: 0 15px;
+}
+
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Search Section Styling */
+.search-section {
+    background-color: #e9ecef;
+    padding: 30px;
+    text-align: center;
+}
+
+.search-section h2 {
+    margin-bottom: 20px;
+}
+
+#searchForm input,
+#searchForm button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#searchForm button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#searchForm button:hover {
+    background-color: #555;
+}
+
+/* Container for Sidebar and Property Listings */
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.sidebar form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar form label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.sidebar form input,
+.sidebar form select,
+.sidebar form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.sidebar form button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar form button:hover {
+    background-color: #555;
+}
+
+/* Main Content Section for Property Listings */
+.main-content {
+    flex: 1;
+}
+
+.property-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.property-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.property-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.property-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.property-card a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.property-card a:hover {
+    color: #555;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+    }
+}
