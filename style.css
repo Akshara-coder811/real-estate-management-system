@@ -1,189 +1,165 @@
-/* Reset default browser styles */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
+/* Body and General Styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    color: #333;
     line-height: 1.6;
 }
 
-/* Header Styling */
+/* Header Section */
 .header {
     background-color: #333;
-    color: white;
+    color: #fff;
     padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .header .logo h1 {
+    font-size: 28px;
     margin: 0;
-    font-size: 24px;
 }
 
-.header nav ul {
-    display: flex;
+.nav-list {
     list-style-type: none;
+    padding: 0;
+    text-align: right;
 }
 
-.header nav ul li {
-    margin: 0 15px;
+.nav-list li {
+    display: inline;
+    margin-left: 20px;
 }
 
-.header nav ul li a {
-    color: white;
+.nav-list a {
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 18px;
 }
 
-/* Search Section Styling */
+.nav-list a:hover {
+    text-decoration: underline;
+}
+
+/* Search Section */
 .search-section {
-    background-color: #e9ecef;
-    padding: 30px;
+    background-color: #fff;
+    padding: 40px;
     text-align: center;
 }
 
 .search-section h2 {
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-#searchForm input,
-#searchForm button {
+.search-section form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-section input {
     padding: 10px;
-    margin: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-#searchForm button {
+.search-section button {
+    padding: 10px 20px;
+    font-size: 16px;
     background-color: #333;
-    color: white;
+    color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-#searchForm button:hover {
+.search-section button:hover {
     background-color: #555;
 }
 
-/* Container for Sidebar and Property Listings */
+/* Container for Main Content */
 .container {
     display: flex;
-    padding: 20px;
-}
-
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    background-color: #fff;
-    padding: 20px;
-    margin-right: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar h2 {
-    margin-bottom: 15px;
-    font-size: 22px;
-}
-
-.sidebar form {
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar form label {
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.sidebar form input,
-.sidebar form select,
-.sidebar form button {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-}
-
-.sidebar form button {
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-}
-
-.sidebar form button:hover {
-    background-color: #555;
-}
-
-/* Main Content Section for Property Listings */
-.main-content {
-    flex: 1;
-}
-
-.property-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 40px;
+    justify-content: space-between;
     gap: 20px;
 }
 
-.property-card {
+/* Sidebar Section */
+.sidebar {
+    width: 30%;
     background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.property-card img {
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.sidebar label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.sidebar input,
+.sidebar select {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.property-card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.property-card p {
-    font-size: 14px;
-    margin-bottom: 10px;
+.sidebar button:hover {
+    background-color: #555;
 }
 
-.property-card a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
+/* Main Content Section */
+.main-content {
+    width: 65%;
 }
 
-.property-card a:hover {
-    color: #555;
+.main-content h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
 }
 
-/* Footer Styling */
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Footer Section */
 .footer {
     background-color: #333;
-    color: white;
-    padding: 15px;
+    color: #fff;
     text-align: center;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-right: 0;
-    }
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
