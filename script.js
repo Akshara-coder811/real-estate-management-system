@@ -1,83 +1,62 @@
-// Sample properties data (this would ideally come from a backend or a database)
+// Sample Data for Properties
 const properties = [
     {
-        name: "Luxury Apartment in Mumbai",
+        id: 1,
+        title: "Luxury Apartment in Mumbai",
         location: "Mumbai, Maharashtra",
-        price: 8000000,
-        bedrooms: 3,
-        type: "apartment",
-        image: "https://via.placeholder.com/300x200"
-    },
-    {
-        name: "Spacious Villa in Goa",
-        location: "Goa",
         price: 15000000,
-        bedrooms: 4,
-        type: "villa",
-        image: "https://via.placeholder.com/300x200"
+        bedrooms: 3,
+        propertyType: "apartment",
+        imageUrl: "https://via.placeholder.com/300x200?text=Luxury+Apartment"
     },
     {
-        name: "Modern House in Bangalore",
-        location: "Bangalore, Karnataka",
-        price: 6000000,
+        id: 2,
+        title: "2BHK House in Pune",
+        location: "Pune, Maharashtra",
+        price: 8000000,
         bedrooms: 2,
-        type: "house",
-        image: "https://via.placeholder.com/300x200"
+        propertyType: "house",
+        imageUrl: "https://via.placeholder.com/300x200?text=2BHK+House"
     },
     {
-        name: "Cozy Apartment in Delhi",
-        location: "Delhi",
-        price: 5000000,
-        bedrooms: 2,
-        type: "apartment",
-        image: "https://via.placeholder.com/300x200"
-    },
-    {
-        name: "Luxury Villa in Kerala",
-        location: "Kerala",
-        price: 12000000,
+        id: 3,
+        title: "Villa with Pool in Goa",
+        location: "Goa",
+        price: 25000000,
         bedrooms: 5,
-        type: "villa",
-        image: "https://via.placeholder.com/300x200"
+        propertyType: "villa",
+        imageUrl: "https://via.placeholder.com/300x200?text=Villa+with+Pool"
+    },
+    {
+        id: 4,
+        title: "Residential Land in Bangalore",
+        location: "Bangalore, Karnataka",
+        price: 12000000,
+        bedrooms: 0,
+        propertyType: "land",
+        imageUrl: "https://via.placeholder.com/300x200?text=Residential+Land"
     }
 ];
 
-// Function to filter properties based on search criteria
-function filterProperties() {
-    const location = document.getElementById("searchLocation").value.toLowerCase();
-    const price = parseInt(document.getElementById("searchPrice").value, 10);
-    const bedrooms = parseInt(document.getElementById("searchBedrooms").value, 10);
-
-    const filteredProperties = properties.filter(property => {
-        return (
-            (location === "" || property.location.toLowerCase().includes(location)) &&
-            (isNaN(price) || property.price <= price) &&
-            (isNaN(bedrooms) || property.bedrooms >= bedrooms)
-        );
-    });
-
-    displayProperties(filteredProperties);
-}
-
-// Function to display the filtered properties
+// Function to display property listings
 function displayProperties(propertiesToDisplay) {
     const propertyList = document.getElementById("property-list");
-    propertyList.innerHTML = ""; // Clear the existing list
+    propertyList.innerHTML = ""; // Clear the current list
 
     if (propertiesToDisplay.length === 0) {
-        propertyList.innerHTML = "<p>No properties found.</p>";
+        propertyList.innerHTML = "<p>No properties found based on your criteria.</p>";
     } else {
         propertiesToDisplay.forEach(property => {
             const propertyCard = document.createElement("div");
             propertyCard.classList.add("property-card");
 
             propertyCard.innerHTML = `
-                <img src="${property.image}" alt="${property.name}" />
-                <h3>${property.name}</h3>
-                <p>Location: ${property.location}</p>
-                <p>Price: ₹${property.price.toLocaleString()}</p>
-                <p>Bedrooms: ${property.bedrooms}</p>
-                <a href="#">View Details</a>
+                <img src="${property.imageUrl}" alt="${property.title}">
+                <h3>${property.title}</h3>
+                <p><strong>Location:</strong> ${property.location}</p>
+                <p><strong>Price:</strong> ₹${property.price.toLocaleString()}</p>
+                <p><strong>Bedrooms:</strong> ${property.bedrooms}</p>
+                <p><strong>Property Type:</strong> ${property.propertyType.charAt(0).toUpperCase() + property.propertyType.slice(1)}</p>
             `;
 
             propertyList.appendChild(propertyCard);
@@ -85,11 +64,55 @@ function displayProperties(propertiesToDisplay) {
     }
 }
 
-// Add event listener for the search form
-document.getElementById("searchForm").addEventListener("submit", function(event) {
+// Function to apply filters
+function applyFilters(event) {
     event.preventDefault();
-    filterProperties();
-});
 
-// Initial display of properties
-displayProperties(properties);
+    // Get values from the filter form
+    const location = document.getElementById("filterLocation").value.toLowerCase();
+    const price = parseInt(document.getElementById("filterPrice").value);
+    const bedrooms = parseInt(document.getElementById("filterBedrooms").value);
+    const propertyType = document.getElementById("filterPropertyType").value.toLowerCase();
+
+    // Filter properties based on the input values
+    const filteredProperties = properties.filter(property => {
+        const matchesLocation = property.location.toLowerCase().includes(location);
+        const matchesPrice = price ? property.price <= price : true;
+        const matchesBedrooms = bedrooms ? property.bedrooms >= bedrooms : true;
+        const matchesPropertyType = propertyType !== "any" ? property.propertyType === propertyType : true;
+
+        return matchesLocation && matchesPrice && matchesBedrooms && matchesPropertyType;
+    });
+
+    // Display the filtered properties
+    displayProperties(filteredProperties);
+}
+
+// Function to navigate to the "Home" section (top of the page)
+function goToHome() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+}
+
+// Function to scroll to the "Properties" section
+function showProperties() {
+    document.getElementById("properties-section").scrollIntoView({ behavior: 'smooth' });
+}
+
+// Function to show an "About Us" section (using alert for demo purposes)
+function showAboutUs() {
+    alert("About Us: We provide premium real estate services across India.");
+}
+
+// Function to show a "Contact Us" section (using alert for demo purposes)
+function showContact() {
+    alert("Contact Us: You can reach us at contact@indiarealeastate.com.");
+}
+
+// Display all properties when the page loads
+window.onload = function () {
+    displayProperties(properties);
+};
+
+// Attach the filter form submit event listener
+document.getElementById("filterForm").addEventListener("submit", applyFilters);
+
