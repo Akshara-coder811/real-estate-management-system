@@ -15,10 +15,10 @@
         </div>
         <nav>
             <ul class="nav-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Properties</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="javascript:void(0)" onclick="goToHome()">Home</a></li>
+                <li><a href="javascript:void(0)" onclick="showProperties()">Properties</a></li>
+                <li><a href="javascript:void(0)" onclick="showAboutUs()">About Us</a></li>
+                <li><a href="javascript:void(0)" onclick="showContact()">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -63,7 +63,7 @@
         </aside>
 
         <!-- Main Content Section for Property Listings -->
-        <main class="main-content">
+        <main class="main-content" id="properties-section">
             <h2>Property Listings</h2>
 
             <!-- Property List will be dynamically injected by JavaScript -->
@@ -76,7 +76,27 @@
         <p>&copy; 2024 India Real Estate. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Function to navigate to the "Home" section (top of the page)
+        function goToHome() {
+            window.scrollTo(0, 0); // Scroll to the top of the page
+        }
+
+        // Function to scroll to the "Properties" section
+        function showProperties() {
+            document.getElementById("properties-section").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Function to show an "About Us" section (using alert for demo purposes)
+        function showAboutUs() {
+            alert("About Us: We provide premium real estate services across India.");
+        }
+
+        // Function to show a "Contact Us" section (using alert for demo purposes)
+        function showContact() {
+            alert("Contact Us: You can reach us at contact@indiarealeastate.com.");
+        }
+    </script>
 </body>
 </html>
 <script>
